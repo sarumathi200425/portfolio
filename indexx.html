@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sarumathi Portfolio</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#070014;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND EFFECT */
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:purple;
+      border-radius:50%;
+      top:-150px;
+      left:-150px;
+      filter:blur(180px);
+      opacity:0.7;
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#ff4ecd;
+      border-radius:50%;
+      bottom:-150px;
+      right:-150px;
+      filter:blur(180px);
+      opacity:0.5;
+      z-index:-1;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:25px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.2);
+      backdrop-filter:blur(10px);
+    }
+
+    nav h2{
+      font-size:30px;
+      color:white;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#ff4ecd;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:120px 10%;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h3{
+      font-size:28px;
+      color:#d1d5db;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:70px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text span{
+      color:#ff4ecd;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      margin-bottom:30px;
+      font-size:18px;
+      line-height:1.8;
+      max-width:600px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:linear-gradient(45deg,#7c3aed,#ff4ecd);
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(255,78,205,0.4);
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* PROFILE IMAGE */
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .circle{
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      padding:8px;
+      background:linear-gradient(45deg,#7c3aed,#ff4ecd);
+      box-shadow:0 0 40px rgba(255,78,205,0.5);
+    }
+
+    .circle img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:8px solid #070014;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:80px 10%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:45px;
+      margin-bottom:50px;
+    }
+
+    .title span{
+      color:#ff4ecd;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:25px;
+      backdrop-filter:blur(10px);
+      line-height:2;
+      color:#d1d5db;
+      box-shadow:0 0 20px rgba(255,255,255,0.05);
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-box{
+      background:rgba(255,255,255,0.05);
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      backdrop-filter:blur(10px);
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .skill-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(255,78,205,0.3);
+    }
+
+    .skill-box h3{
+      margin-top:15px;
+      color:white;
+    }
+    .skill-box{
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    padding:30px;
+    backdrop-filter:blur(10px);
+    transition:0.4s;
+}
+
+.skill-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(255,78,205,0.4);
+}
+
+.skill-box h3{
+    margin-bottom:20px;
+    color:white;
+    font-size:22px;
+}
+
+.skill-list{
+    list-style:none;
+    padding:0;
+}
+
+.skill-list li{
+    margin:12px 0;
+    color:#d1d5db;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.skill-list li:hover{
+    color:#ff4ecd;
+    padding-left:8px;
+}
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      overflow:hidden;
+      backdrop-filter:blur(10px);
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+      color:#ff4ecd;
+    }
+
+    .project-content p{
+      color:#d1d5db;
+      line-height:1.8;
+    }
+    .certificates{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.certificate-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:15px 20px;
+    border-radius:12px;
+    min-width:180px;
+    text-align:center;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.certificate-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(255,78,205,0.3);
+}
+
+.certificate-card h3{
+    color:white;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.certificate-card p{
+    color:#a855f7;
+    font-size:12px;
+}
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+      background:rgba(255,255,255,0.05);
+      padding:50px;
+      border-radius:25px;
+      backdrop-filter:blur(10px);
+    }
+
+    .contact p{
+      margin:15px 0;
+      color:#d1d5db;
+      font-size:18px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:25px;
+      color:#cbd5e1;
+      margin-top:50px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:50px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .circle{
+        width:280px;
+        height:280px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <h2>VisionCraft</h2>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <h3>Hi, I'm</h3>
+
+      <h1>
+        A. <span>Sarumathi</span>
+      </h1>
+
+      <p>
+        UI/UX Designer and Data Analytics Fresher passionate
+        about creating modern digital experiences and
+        solving problems using technology and design.
+      </p>
+
+      <a href="C:\Users\asaru\Downloads\resume.pdf.pdf" class="btn" download>
+        Download CV
+      </a>
+
+    </div>
+
+    <div class="hero-image">
+
+      <div class="circle">
+
+        <img src="C:\Users\asaru\Pictures\saru m.png" alt="Profile">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="title">
+      About <span>Me</span>
+    </h2>
+
+   <div class="about">
+
+  <div class="about">
+
+  <p>
+    Motivated and detail-oriented fresher with skills in UI/UX Design,
+    Python, HTML, CSS, SQL, and Data Analytics.
+  </p>
+
+  <br>
+
+  <p>
+    Passionate about creating user-friendly digital experiences using
+    Figma, Adobe XD, and Photoshop. Strong problem-solving,
+    creativity, and teamwork skills with a desire to grow in the IT industry.
+  </p>
+
+</div>
+
+    
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+  <h2 class="title">
+    Skills
+  </h2>
+
+  <div class="skills">
+
+   <div class="skill-box">
+
+    <h3>🎨 UI/UX Design</h3>
+
+    <ul class="skill-list">
+        <li>Figma</li>
+        <li>Adobe XD</li>
+        <li>Photoshop</li>
+    </ul>
+
+</div>
+
+<div class="skill-box">
+
+    <h3>💻 Web Technologies</h3>
+
+    <ul class="skill-list">
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+
+</div>
+
+<div class="skill-box">
+
+    <h3>⚙️ Programming</h3>
+
+    <ul class="skill-list">
+        <li>Python</li>
+        <li>Java</li>
+        <li>C++</li>
+    </ul>
+
+</div>
+
+<div class="skill-box">
+
+    <h3>🗄️ Database</h3>
+
+    <ul class="skill-list">
+        <li>SQL</li>
+    </ul>
+
+</div>
+
+<div class="skill-box">
+
+    <h3>📊 Data Analytics</h3>
+
+    <ul class="skill-list">
+        <li>Data Analytics</li>
+        <li>Data Visualization</li>
+    </ul>
+
+</div>
+  </div>
+
+</section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <h2 class="title">
+      My <span>Projects</span>
+    </h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+
+        <img src="C:\Users\asaru\Downloads\ad agency.png" alt="Project">
+
+        <div class="project-content">
+
+          <h3>AD Agency Maintenance</h3>
+
+          <p>
+            Maintained advertising campaigns for smooth
+            execution and timely delivery.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="C:\Users\asaru\Downloads\deep person.png" alt="Project">
+
+        <div class="project-content">
+
+          <h3>Deep Persona-LSTM</h3>
+
+          <p>
+            Built an LSTM-based model for MBTI
+            personality classification.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="C:\Users\asaru\Downloads\plant diseas.png" alt="Project">
+
+        <div class="project-content">
+
+          <h3>Plant Disease Detection</h3>
+
+          <p>
+            Developed a model to detect plant diseases
+            using image processing.
+          </p>
+
+        </div>
+
+      </div>
+      <div class="project-card">
+
+    <img src="C:\Users\asaru\Downloads\smart fule.png" alt="Smart Fuel Monitoring System">
+
+    <div class="project-content">
+
+        <h3>Smart Fuel Monitoring System</h3>
+
+        <p>
+            Designed and developed a smart fuel monitoring system
+            to track fuel levels, monitor consumption, and provide
+            real-time insights using IoT-based technology.
+        </p>
+
+    </div>
+
+</div>
+
+    </div>
+
+  </section>
+  <section id="certificates">
+
+  <h2 class="title">
+    Certificates
+  </h2>
+
+  <div class="certificates">
+
+    <div class="certificate-card">
+      <h3>UI/UX Designing</h3>
+      <p>Certificate</p>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Data Analytics</h3>
+      <p>Certificate</p>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Data Science</h3>
+      <p>Certificate</p>
+    </div>
+
+    <div class="certificate-card">
+      <h3>SWAYAM Course</h3>
+      <p>Certificate</p>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Vcodez Internship</h3>
+      <p>Certificate</p>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2 class="title">
+      Contact <span>Me</span>
+    </h2>
+
+    <div class="contact">
+
+      <p>Email : sarumathi2004@gmail.com</p>
+
+      <p>Phone : 7010676884</p>
+
+      <p>LinkedIn : linkedin.com/in/a-sarumathi</p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+       A. Sarumathi | Portfolio Website
+    </p>
+
+  </footer>
+
+</body>
+</html>
