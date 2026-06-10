@@ -158,14 +158,21 @@
       justify-content:center;
     }
 
-    .circle{
-      width:350px;
-      height:350px;
-      border-radius:50%;
-      padding:8px;
-      background:linear-gradient(45deg,#7c3aed,#ff4ecd);
-      box-shadow:0 0 40px rgba(255,78,205,0.5);
-    }
+   .circle{
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    padding:8px;
+    background:linear-gradient(45deg,#7c3aed,#ff4ecd);
+    box-shadow:0 0 40px rgba(255,78,205,0.5);
+    transition:all 0.5s ease;
+}
+
+.circle:hover{
+    transform:scale(1.08) rotate(3deg);
+    box-shadow:0 0 70px rgba(255,78,205,0.9);
+}
+
 
     .circle img{
       width:100%;
@@ -194,59 +201,106 @@
     /* ABOUT */
 
     .about{
-      background:rgba(255,255,255,0.05);
-      padding:40px;
-      border-radius:25px;
-      backdrop-filter:blur(10px);
-      line-height:2;
-      color:#d1d5db;
-      box-shadow:0 0 20px rgba(255,255,255,0.05);
-    }
+    background:rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    color:#d1d5db;
+    line-height:2;
+    position:relative;
+    overflow:hidden;
+    border-left:5px solid #ff4ecd;
+    transition:all 0.5s ease;
+}
 
+.about:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(255,78,205,0.4);
+}
+
+.about::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    transition:0.8s;
+}
+
+.about:hover::before{
+    left:120%;
+}
+
+.about p{
+    transition:0.3s;
+}
+
+.about:hover p{
+    color:white;
+}
     /* SKILLS */
 
     .skills{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:25px;
-    }
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    align-items:stretch;
+}
 
-    .skill-box{
-      background:rgba(255,255,255,0.05);
-      padding:35px;
-      border-radius:20px;
-      text-align:center;
-      backdrop-filter:blur(10px);
-      transition:0.3s;
-      box-shadow:0 0 20px rgba(255,255,255,0.05);
-    }
-
-    .skill-box:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 25px rgba(255,78,205,0.3);
-    }
-
-    .skill-box h3{
-      margin-top:15px;
-      color:white;
-    }
-    .skill-box{
+.skill-box{
     background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
     border-radius:20px;
     padding:30px;
+    text-align:center;
     backdrop-filter:blur(10px);
-    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.4s ease;
+}
+
+.skill-box::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    transition:0.8s;
+}
+
+.skill-box:hover::before{
+    left:130%;
 }
 
 .skill-box:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 25px rgba(255,78,205,0.4);
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 0 30px rgba(255,78,205,0.4);
+    border-color:#ff4ecd;
 }
 
 .skill-box h3{
-    margin-bottom:20px;
     color:white;
     font-size:22px;
+    margin-bottom:20px;
+    transition:0.3s;
+}
+
+.skill-box:hover h3{
+    color:#ff4ecd;
 }
 
 .skill-list{
@@ -262,8 +316,8 @@
 }
 
 .skill-list li:hover{
-    color:#ff4ecd;
-    padding-left:8px;
+    color:white;
+    transform:translateX(8px);
 }
 
     /* PROJECTS */
@@ -306,40 +360,116 @@
       color:#d1d5db;
       line-height:1.8;
     }
-    .certificates{
+     /* Certificates */
+  .certificates{
     display:flex;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     gap:20px;
-    justify-content:center;
+    overflow-x:auto;
+    padding:20px 0;
+    scroll-behavior:smooth;
+}
+
+.certificates::-webkit-scrollbar{
+    height:8px;
+}
+
+.certificates::-webkit-scrollbar-thumb{
+    background:#ff4ecd;
+    border-radius:10px;
 }
 
 .certificate-card{
+    min-width:280px;
+    height:120px;
+    flex-shrink:0;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,255,255,0.1);
-    padding:15px 20px;
-    border-radius:12px;
-    min-width:180px;
-    text-align:center;
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
     backdrop-filter:blur(10px);
-    transition:0.3s;
+    transition:all 0.4s ease;
+
+    animation:float 4s ease-in-out infinite;
 }
 
+/* Shine Effect */
+.certificate-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:60%;
+    height:100%;
+    background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.2),
+      transparent
+    );
+    transition:0.6s;
+}
+
+.certificate-card:hover::before{
+    left:150%;
+}
+
+/* Hover Effect */
 .certificate-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 20px rgba(255,78,205,0.3);
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 30px rgba(255,78,205,0.5);
+    border-color:#ff4ecd;
 }
 
 .certificate-card h3{
     color:white;
-    font-size:14px;
-    margin-bottom:5px;
+    margin-bottom:8px;
+    transition:0.3s;
 }
 
 .certificate-card p{
-    color:#a855f7;
-    font-size:12px;
+    color:#cbd5e1;
 }
 
+.certificate-card:hover h3{
+    color:#ff4ecd;
+}
+
+/* Floating Animation */
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* Different Delay */
+.certificate-card:nth-child(2){
+    animation-delay:0.5s;
+}
+
+.certificate-card:nth-child(3){
+    animation-delay:1s;
+}
+
+.certificate-card:nth-child(4){
+    animation-delay:1.5s;
+}
+
+.certificate-card:nth-child(5){
+    animation-delay:2s;
+}
     /* CONTACT */
 
     .contact{
@@ -358,42 +488,59 @@
 
     /* FOOTER */
 
-    footer{
-      text-align:center;
-      padding:25px;
-      color:#cbd5e1;
-      margin-top:50px;
-    }
+    .footer{
+    margin-top:80px;
+    padding:40px 10%;
+    text-align:center;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(255,255,255,0.1);
+}
 
-    /* RESPONSIVE */
+.footer-content h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
 
-    @media(max-width:900px){
+.footer-content p{
+    color:#cbd5e1;
+    margin:10px 0;
+}
 
-      .hero{
-        flex-direction:column-reverse;
-        text-align:center;
-      }
+.social-links{
+    margin:20px 0;
+}
 
-      .hero-text h1{
-        font-size:50px;
-      }
+.social-links a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    transition:0.3s;
+}
 
-      nav{
-        flex-direction:column;
-        gap:20px;
-      }
+.social-links a:hover{
+    color:#ff4ecd;
+}
 
-      nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
+.copyright{
+    margin-top:20px;
+    font-size:14px;
+}
 
-      .circle{
-        width:280px;
-        height:280px;
-      }
+.top-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 25px;
+    background:linear-gradient(45deg,#7c3aed,#ff4ecd);
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.3s;
+}
 
-    }
+.top-btn:hover{
+    transform:scale(1.05);
+}
 
   </style>
 
@@ -436,7 +583,7 @@
         solving problems using technology and design.
       </p>
 
-      <a href="SARUMATHI ALAGAPPAN (1).pdf" class="btn" download>
+      <a href="Asarumathi.pdf" class="btn" download>
         Download CV
       </a>
 
@@ -641,34 +788,27 @@
     Certificates
   </h2>
 
-  <div class="certificates">
+ <div class="certificate-card"
+     onclick="window.open('UI UX.jpg','_blank')">
 
-    <div class="certificate-card">
-      <h3>UI/UX Designing</h3>
-      <p>Certificate</p>
-    </div>
+    <h3>🎨 UI/UX Designing</h3>
+    <p>👁 View Certificate</p>
 
-    <div class="certificate-card">
-      <h3>Data Analytics</h3>
-      <p>Certificate</p>
-    </div>
+</div>
+<div class="certificate-card"
+     onclick="window.open('SWAYAM.jpg','_blank')">
 
-    <div class="certificate-card">
-      <h3>Data Science</h3>
-      <p>Certificate</p>
-    </div>
+    <h3>📚 SWAYAM Course</h3>
+    <p>👁 View Certificate</p>
 
-    <div class="certificate-card">
-      <h3>SWAYAM Course</h3>
-      <p>Certificate</p>
-    </div>
+</div>
+<div class="certificate-card"
+     onclick="window.open('DA.jpg','_blank')">
 
-    <div class="certificate-card">
-      <h3>Vcodez Internship</h3>
-      <p>Certificate</p>
-    </div>
+    <h3>💻 Data Science</h3>
+    <p>👁 View Certificate</p>
 
-  </div>
+</div>
 
 </section>
 
@@ -682,11 +822,17 @@
 
     <div class="contact">
 
-      <p>Email : sarumathi2004@gmail.com</p>
+      <p>Email :asarumathi2004@gmail.com</p>
 
       <p>Phone : 7010676884</p>
 
-      <p>LinkedIn : linkedin.com/in/a-sarumathi</p>
+      <p>
+  LinkedIn :
+  <a href="https://www.linkedin.com/in/a-sarumathi-2520sm"
+     target="_blank">
+     linkedin.com/in/a-sarumathi
+  </a>
+</p>
 
     </div>
 
@@ -694,13 +840,30 @@
 
   <!-- FOOTER -->
 
-  <footer>
+  <!-- FOOTER -->
 
-    <p>
-       A. Sarumathi | Portfolio Website
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <h3>A. Sarumathi</h3>
+
+   <p>UI/UX Designer | Crafting Seamless Digital Experiences</p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/a-sarumathi-2520sm" target="_blank">LinkedIn</a>
+      <a href="mailto:asarumathi2004@gmail.com">Email</a>
+      <a href="https://sarumathi200425.github.io/portfolio/#projects" target="_blank">GitHub</a>
+    </div>
+
+    <p class="copyright">
+      © 2026 A. Sarumathi. All Rights Reserved.
     </p>
 
-  </footer>
+    <a href="#home" class="top-btn">↑ Back to Top</a>
 
+  </div>
+
+</footer>
 </body>
 </html>
